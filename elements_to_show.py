@@ -90,6 +90,23 @@ diloven = Element(
 )
 
 
+#Лекарства от нехватки воздуха
+dexolyne_plus = Element(
+    "Дексалин Плюс",
+    [
+        CraftElement(base_elements.dexolyne, 1/3),
+        CraftElement(base_elements.carbon, 1/3),
+        CraftElement(base_elements.iron, 1/3),
+    ],
+)
+saline_solution = Element(
+    "Физраствор",
+    [
+        CraftElement(base_elements.water, 4/5),
+        CraftElement(base_elements.salt, 1/5),
+    ],
+)
+
 
 element_list = [
     bicaridine,
@@ -104,4 +121,7 @@ element_list = [
     siginate,
 
     diloven,
+
+    dexolyne_plus,
+    saline_solution,
 ]

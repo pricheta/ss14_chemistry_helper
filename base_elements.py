@@ -79,3 +79,10 @@ sodium_hydroxide = Element(
         CraftElement(hydroxide, 1/2),
     ],
 )
+dexolyne =Element(
+    "Дексалин",
+    [
+        CraftElement(oxygen, 2/3),
+        CraftElement(plasma, 0.0000000000000000000000001),
+    ],
+)
