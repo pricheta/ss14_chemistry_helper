@@ -58,6 +58,14 @@ pirasine = Element(
         CraftElement(base_elements.carbon, 1/3),
     ],
 )
+insusine = Element(
+    "Инсузин",
+    [
+        CraftElement(leporasine, 1/3),
+        CraftElement(base_elements.silicon, 1/3),
+        CraftElement(base_elements.celotane, 1/3),
+    ],
+)
 
 
 element_list = [
@@ -68,4 +76,5 @@ element_list = [
     dermaline,
     leporasine,
     pirasine,
+    insusine,
 ]
