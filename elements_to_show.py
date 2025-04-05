@@ -88,6 +88,20 @@ diloven = Element(
         CraftElement(base_elements.nitrogen, 1/3),
     ],
 )
+hyronalyne = Element(
+    "Хироналин",
+    [
+        CraftElement(diloven, 1/2),
+        CraftElement(base_elements.radium, 1/2),
+    ],
+)
+aritrazine = Element(
+    "Аритразин",
+    [
+        CraftElement(hyronalyne, 1/2),
+        CraftElement(base_elements.hydrogen, 1/2),
+    ],
+)
 
 
 #Лекарства от нехватки воздуха
@@ -121,6 +135,7 @@ element_list = [
     siginate,
 
     diloven,
+    aritrazine,
 
     dexolyne_plus,
     saline_solution,

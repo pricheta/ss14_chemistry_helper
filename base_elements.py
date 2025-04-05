@@ -17,6 +17,7 @@ chlorine = Element("Хлор", [])
 ammonia = Element("Аммиак", [])
 potassium = Element("Калий", [])
 nitrogen = Element("Азот", [])
+radium = Element("Радий", [])
 
 
 # Промежуточные элементы
