@@ -1,6 +1,3 @@
-import math
-
-
 class Element:
     instances: list["Element"] = []
 
@@ -9,18 +6,19 @@ class Element:
         name: str,
         recipe: list[tuple["Element", float]] | None = None,
         show_user: bool = False,
+        temperature: str = "",
+        catalyst: tuple["Element", int] = (),
     ) -> None:
         self.name = name
         self.recipe = recipe
         self.show_user = show_user
+        self.temperature = temperature
+        self.catalyst = catalyst
         if show_user:
             Element.instances.append(self)
 
     def __str__(self) -> str:
         return self.name
-
-    def get_full_recipe(self, amount: float) -> list[tuple["Element", float]]:
-        ...
 
 
 oxygen = Element("Кислород")
@@ -238,7 +236,7 @@ saline_solution = Element(
     ],
     True,
 )
-falangimin = Element(
+falanhymyne = Element(
     "Фалангимин",
     [
         (unstable_mutagen, 1 / 3),
@@ -247,4 +245,3 @@ falangimin = Element(
     ],
     True,
 )
-

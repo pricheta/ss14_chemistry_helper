@@ -1,6 +1,6 @@
 from clear_screen import clear_screen
 from elements import Element
-
+from craft_step import get_element_recipe
 
 def get_user_answer(element_dict: dict[int, Element]) -> int:
     print("Представленные элементы")
@@ -21,14 +21,6 @@ if __name__ == "__main__":
 
     while user_answer:
         element = element_dict[user_answer]
-        recipe = element.get_full_recipe(90)
-
-        print(f"\nПоследовательность для варки 90 унций {element}а:")
-        for recipe_step in recipe:
-            element = recipe_step[0]
-            amount = recipe_step[1]
-            print(f"{element}: {amount}")
-        input("\nНажмите Enter для продолжения")
-        clear_screen()
+        recipe = get_element_recipe(element, 90, [])
 
         user_answer = get_user_answer(element_dict=element_dict)
