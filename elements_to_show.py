@@ -1,7 +1,6 @@
 import base_elements
 from element_schema import Element, CraftElement
 
-
 bicaridine = Element(
     "Бикаридин",
     [
@@ -9,7 +8,33 @@ bicaridine = Element(
         CraftElement(base_elements.carbon, 1/2),
     ],
 )
+bruisine = Element(
+    "Бруизин",
+    [
+        CraftElement(base_elements.lithium, 0.9/2),
+        CraftElement(bicaridine, 1/2),
+        CraftElement(base_elements.sugar, 1/2),
+    ],
+)
+puncturase = Element(
+    "Пунктураз",
+    [
+        CraftElement(base_elements.hydroxide, 1/2),
+        CraftElement(bicaridine, 1/2),
+    ],
+)
+lacerinole = Element(
+    "Лаценирол",
+    [
+        CraftElement(base_elements.bensole, 1/2),
+        CraftElement(bicaridine, 1/2),
+    ],
+)
+
 
 element_list = [
     bicaridine,
+    bruisine,
+    puncturase,
+    lacerinole,
 ]
