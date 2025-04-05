@@ -28,7 +28,7 @@ class CraftStep:
             return f'{version}Добавляем {self.amount_to_craft} ед. элемента \"{self.crafted_element}\"'
 
         temperature_str = (
-            f", при температуре {self.crafted_element.temperature}"
+            f" при температуре {self.crafted_element.temperature}"
             if self.crafted_element.temperature
             else ""
         )
