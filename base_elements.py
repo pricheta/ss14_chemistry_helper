@@ -15,6 +15,8 @@ water = Element("Вода", [])
 sodium = Element("Натрий", [])
 chlorine = Element("Хлор", [])
 ammonia = Element("Аммиак", [])
+potassium = Element("Калий", [])
+nitrogen = Element("Азот", [])
 
 
 # Промежуточные элементы
