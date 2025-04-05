@@ -1,3 +1,6 @@
+import math
+
+
 class CraftElement:
     def __init__(
         self,
@@ -27,7 +30,7 @@ class Element:
         full_recipe: list[tuple["Element", float]] = []
 
         if not self.recipe:
-            full_recipe = [(self, amount)]
+            full_recipe = [(self, math.ceil(amount))]
         else:
             for craft_element in self.recipe:
                 full_recipe += craft_element.element.get_full_recipe(amount * craft_element.amount)
