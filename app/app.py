@@ -1,6 +1,5 @@
-from elements_to_show import element_list
 from clear_screen import clear_screen
-from element_schema import Element
+from elements import Element
 
 
 def get_user_answer(element_dict: dict[int, Element]) -> int:
@@ -13,7 +12,11 @@ def get_user_answer(element_dict: dict[int, Element]) -> int:
 
 if __name__ == "__main__":
     clear_screen()
-    element_dict: dict[int, Element] = {number + 1: element for number, element in enumerate(element_list)}
+    element_dict: dict[int, Element] = {
+        number + 1: element
+        for number, element in enumerate(Element.instances)
+        if element.show_user
+    }
     user_answer = get_user_answer(element_dict=element_dict)
 
     while user_answer:
