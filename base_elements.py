@@ -4,6 +4,7 @@ from element_schema import Element, CraftElement
 oxygen = Element("Кислород", [])
 carbon = Element("Углерод", [])
 sugar = Element("Сахар", [])
+lithium = Element("Литий", [])
 
 # Промежуточные элементы
 inaprovaline = Element(
