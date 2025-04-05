@@ -1,6 +1,7 @@
 import base_elements
 from element_schema import Element, CraftElement
 
+# Лекарства от механического урона
 bicaridine = Element(
     "Бикаридин",
     [
@@ -32,9 +33,59 @@ lacerinole = Element(
 )
 
 
+# Лекарства от физического урона
+dermaline = Element(
+    "Дермалин",
+    [
+        CraftElement(base_elements.celotane, 1/3),
+        CraftElement(base_elements.oxygen, 1/3),
+        CraftElement(base_elements.phosphorus, 1/3),
+    ],
+)
+leporasine = Element(
+    "Лепоразин",
+    [
+        CraftElement(base_elements.iron_silicide, 1/2),
+        CraftElement(base_elements.copper, 1/2),
+        CraftElement(base_elements.plasma, 0.0000000000000000000000001),
+    ],
+)
+pirasine = Element(
+    "Пиразин",
+    [
+        CraftElement(leporasine, 1/3),
+        CraftElement(dermaline, 1/3),
+        CraftElement(base_elements.carbon, 1/3),
+    ],
+)
+insusine = Element(
+    "Инсузин",
+    [
+        CraftElement(leporasine, 1/3),
+        CraftElement(base_elements.silicon, 1/3),
+        CraftElement(base_elements.celotane, 1/3),
+    ],
+)
+siginate = Element(
+    "Сигинат",
+    [
+        CraftElement(base_elements.water, 1/4),
+        CraftElement(base_elements.sugar, 1/4),
+        CraftElement(base_elements.sodium_carbonate, 1/4),
+        CraftElement(base_elements.celotane, 1/4),
+        CraftElement(base_elements.sodium_hydroxide, 1/4),
+    ],
+)
+
+
 element_list = [
     bicaridine,
     bruisine,
     puncturase,
     lacerinole,
+    dermaline,
+    leporasine,
+    pirasine,
+    insusine,
+    siginate,
 ]
