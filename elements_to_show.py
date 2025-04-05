@@ -16,8 +16,16 @@ bruisine = Element(
         CraftElement(base_elements.sugar, 1/2),
     ],
 )
+puncturase = Element(
+    "Пунктураз",
+    [
+        CraftElement(base_elements.hydroxide, 1/2),
+        CraftElement(bicaridine, 1/2),
+    ],
+)
 
 element_list = [
     bicaridine,
     bruisine,
+    puncturase,
 ]
