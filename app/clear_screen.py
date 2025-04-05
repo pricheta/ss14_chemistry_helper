@@ -1,4 +1,5 @@
+# pylint: disable=missing-function-docstring, missing-module-docstring
 import os
 
-
-clear_screen = lambda: os.system('cls')
+def clear_screen():
+    os.system('cls')
