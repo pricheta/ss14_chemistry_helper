@@ -66,6 +66,16 @@ insusine = Element(
         CraftElement(base_elements.celotane, 1/3),
     ],
 )
+siginate = Element(
+    "Сигинат",
+    [
+        CraftElement(base_elements.water, 1/4),
+        CraftElement(base_elements.sugar, 1/4),
+        CraftElement(base_elements.sodium_carbonate, 1/4),
+        CraftElement(base_elements.celotane, 1/4),
+        CraftElement(base_elements.sodium_hydroxide, 1/4),
+    ],
+)
 
 
 element_list = [
@@ -77,4 +87,5 @@ element_list = [
     leporasine,
     pirasine,
     insusine,
+    siginate,
 ]
