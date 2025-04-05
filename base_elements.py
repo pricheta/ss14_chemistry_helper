@@ -18,6 +18,7 @@ ammonia = Element("Аммиак", [])
 potassium = Element("Калий", [])
 nitrogen = Element("Азот", [])
 radium = Element("Радий", [])
+ethanol = Element("Этанол", [])
 
 
 # Промежуточные элементы
@@ -80,10 +81,18 @@ sodium_hydroxide = Element(
         CraftElement(hydroxide, 1/2),
     ],
 )
-dexolyne =Element(
+dexolyne = Element(
     "Дексалин",
     [
         CraftElement(oxygen, 2/3),
         CraftElement(plasma, 0.0000000000000000000000001),
+    ],
+)
+unstable_mutagen = Element(
+    "Нестабильный мутаген",
+    [
+        CraftElement(chlorine, 1/3),
+        CraftElement(phosphorus, 1/3),
+        CraftElement(radium, 1/3),
     ],
 )

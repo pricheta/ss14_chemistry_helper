@@ -122,6 +122,17 @@ saline_solution = Element(
 )
 
 
+# Лекарства от клеточного урона
+falangimin = Element(
+    "Фалангимин",
+    [
+        CraftElement(base_elements.unstable_mutagen, 1/3),
+        CraftElement(hyronalyne, 1/3),
+        CraftElement(base_elements.ethanol, 1/3),
+    ],
+)
+
+
 element_list = [
     bicaridine,
     bruisine,
@@ -139,4 +150,6 @@ element_list = [
 
     dexolyne_plus,
     saline_solution,
+
+    falangimin,
 ]
