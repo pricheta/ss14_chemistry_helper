@@ -1,4 +1,4 @@
-import elements
+from elements_to_show import element_list
 from clear_screen import clear_screen
 from element_schema import Element
 
@@ -12,15 +12,6 @@ def get_user_answer(element_dict: dict[int, Element]) -> int:
 
 
 if __name__ == "__main__":
-    element_list: list[Element] = []
-    for variable_name, variable_value in elements.__dict__.items():
-        if (
-            not variable_name.startswith('__') and
-            not "Element" in variable_name and
-            variable_value.recipe
-        ):
-            element_list.append(variable_value)
-
     clear_screen()
     element_dict: dict[int, Element] = {number + 1: element for number, element in enumerate(element_list)}
     user_answer = get_user_answer(element_dict=element_dict)
