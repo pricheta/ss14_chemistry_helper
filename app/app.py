@@ -18,9 +18,18 @@ if __name__ == "__main__":
         if element.show_user
     }
     user_answer = get_user_answer(element_dict=element_dict)
+    clear_screen()
 
     while user_answer:
         element = element_dict[user_answer]
         recipe = get_element_recipe(element, 90, [])
 
+        for step in recipe:
+            spaces = " " * len(step.step_number) * 4
+            print(f'{spaces}{step}')
+
+        input("\nНажмите Enter, чтобы продолжить")
+        clear_screen()
+
         user_answer = get_user_answer(element_dict=element_dict)
+        clear_screen()

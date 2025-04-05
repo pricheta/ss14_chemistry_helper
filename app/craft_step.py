@@ -18,14 +18,12 @@ class CraftStep:
         if self.step_number:
             step_number = [str(number) for number in self.step_number]
             version = '.'.join(step_number)
-            version += '.'
+            version += '. '
         else:
             version = ''
 
-        crafted_element_name = self.crafted_element.name.lower()
-
         if not self.crafted_element.recipe:
-            return f'{version} Добавляем {self.amount_to_craft} ед. {crafted_element_name}а'
+            return f'{version}Добавляем {self.amount_to_craft} ед. элемента \"{self.crafted_element}\"'
 
         temperature_str = (
             f", при температуре {self.crafted_element.temperature}"
@@ -36,11 +34,11 @@ class CraftStep:
         if self.crafted_element.catalyst:
             catalyst_element = self.crafted_element.catalyst[0]
             catalyst_amount = self.crafted_element.catalyst[1]
-            catalyst_str = f", катализатор реакции - {catalyst_amount} ед. {catalyst_element}а"
+            catalyst_str = f", катализатор реакции - {catalyst_amount} ед. элемента \"{catalyst_element}\""
         else:
             catalyst_str = ""
 
-        return f"{version} Получаем {self.amount_to_craft} ед. {crafted_element_name}а{temperature_str}{catalyst_str}"
+        return f"{version}Получаем {self.amount_to_craft} ед. элемента \"{self.crafted_element}\"{temperature_str}{catalyst_str}"
 
 
 
