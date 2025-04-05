@@ -47,8 +47,8 @@ inaprovaline = Element(
     "Инапровалин",
     [
         (oxygen, 1 / 3),
-        (carbon, 1 / 3),
         (sugar, 1 / 3),
+        (carbon, 1 / 3),
     ],
 )
 hydroxide = Element(
@@ -57,13 +57,15 @@ hydroxide = Element(
         (oxygen, 1 / 2),
         (hydrogen, 1 / 2),
     ],
+    temperature="выше 310К",
 )
 bensole = Element(
     "Бензол",
     [
-        (carbon, 1),
         (hydrogen, 1),
+        (carbon, 1),
     ],
+    temperature="выше 310К",
 )
 celotane = Element(
     "Келотан",
@@ -78,6 +80,7 @@ iron_silicide = Element(
         (silicon, 1 / 2),
         (iron, 1 / 2),
     ],
+    temperature="выше 310К",
 )
 salt = Element(
     "Столовая соль",
@@ -85,6 +88,7 @@ salt = Element(
         (sodium, 1 / 2),
         (chlorine, 1 / 2),
     ],
+    temperature="выше 370К",
 )
 sodium_carbonate = Element(
     "Карбонат натрия",
@@ -106,8 +110,8 @@ dexolyne = Element(
     "Дексалин",
     [
         (oxygen, 2 / 3),
-        (plasma, 0.0000000000000000000000001),
     ],
+    catalyst=(plasma, 1),
 )
 unstable_mutagen = Element(
     "Нестабильный мутаген",
@@ -116,12 +120,13 @@ unstable_mutagen = Element(
         (phosphorus, 1 / 3),
         (radium, 1 / 3),
     ],
+    show_user=True,
 )
 bicaridine = Element(
     "Бикаридин",
     [
-        (inaprovaline, 1 / 2),
         (carbon, 1 / 2),
+        (inaprovaline, 1 / 2),
     ],
     True,
 )
@@ -141,14 +146,16 @@ puncturase = Element(
         (bicaridine, 1 / 2),
     ],
     True,
+    temperature="выше 325К",
 )
 lacerinole = Element(
-    "Лаценирол",
+    "Лацеринол",
     [
         (bensole, 1 / 2),
         (bicaridine, 1 / 2),
     ],
     True,
+    temperature="выше 335К",
 )
 dermaline = Element(
     "Дермалин",
@@ -164,9 +171,9 @@ leporasine = Element(
     [
         (iron_silicide, 1 / 2),
         (copper, 1 / 2),
-        (plasma, 0.0000000000000000000000001),
     ],
     True,
+    catalyst=(plasma, 1),
 )
 pirasine = Element(
     "Пиразин",
@@ -176,6 +183,7 @@ pirasine = Element(
         (carbon, 1 / 3),
     ],
     True,
+    temperature="выше 540К",
 )
 insusine = Element(
     "Инсузин",
@@ -185,6 +193,7 @@ insusine = Element(
         (celotane, 1 / 3),
     ],
     True,
+    "выше 433К",
 )
 siginate = Element(
     "Сигинат",
@@ -196,6 +205,7 @@ siginate = Element(
         (sodium_hydroxide, 1 / 4),
     ],
     True,
+    "выше 370К",
 )
 diloven = Element(
     "Диловен",
@@ -224,9 +234,9 @@ aritrazine = Element(
 dexolyne_plus = Element(
     "Дексалин Плюс",
     [
+        (iron, 1 / 3),
         (dexolyne, 1 / 3),
         (carbon, 1 / 3),
-        (iron, 1 / 3),
     ],
     True,
 )
