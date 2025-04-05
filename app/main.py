@@ -1,3 +1,4 @@
+# pylint: disable=redefined-outer-name, import-error, missing-function-docstring, missing-module-docstring
 from clear_screen import clear_screen
 from elements import Element
 from craft_step import get_element_recipe
@@ -6,7 +7,7 @@ def get_user_answer(element_dict: dict[int, Element]) -> int:
     print("Представленные элементы")
     for number, element in element_dict.items():
         print(f"{number}. {element}")
-    print(f"0. Выход")
+    print("0. Выход")
     return int(input("Введите номер элемента: "))
 
 

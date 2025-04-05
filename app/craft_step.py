@@ -1,3 +1,5 @@
+# pylint: disable=too-few-public-methods, too-many-positional-arguments, too-many-arguments, import-error
+# pylint: disable=missing-module-docstring, missing-class-docstring, missing-function-docstring, line-too-long
 import math
 
 from elements import Element

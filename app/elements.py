@@ -1,3 +1,5 @@
+# pylint: disable=too-few-public-methods, too-many-positional-arguments, too-many-arguments,
+# pylint: disable=missing-module-docstring, missing-class-docstring
 class Element:
     instances: list["Element"] = []
 
@@ -7,7 +9,7 @@ class Element:
         recipe: list[tuple["Element", float]] | None = None,
         show_user: bool = False,
         temperature: str = "",
-        catalyst: tuple["Element", int] = (),
+        catalyst: tuple["Element", int] | tuple = (),
     ) -> None:
         self.name = name
         self.recipe = recipe
