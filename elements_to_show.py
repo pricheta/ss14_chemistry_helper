@@ -23,9 +23,18 @@ puncturase = Element(
         CraftElement(bicaridine, 1/2),
     ],
 )
+lacerinole = Element(
+    "Лаценирол",
+    [
+        CraftElement(base_elements.bensole, 1/2),
+        CraftElement(bicaridine, 1/2),
+    ],
+)
+
 
 element_list = [
     bicaridine,
     bruisine,
     puncturase,
+    lacerinole,
 ]

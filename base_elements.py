@@ -23,3 +23,10 @@ hydroxide = Element(
         CraftElement(hydrogen, 1/2),
     ],
 )
+bensole = Element(
+    "Бензол",
+    [
+        CraftElement(carbon, 1),
+        CraftElement(hydrogen, 1),
+    ],
+)
