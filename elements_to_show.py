@@ -42,6 +42,14 @@ dermaline = Element(
         CraftElement(base_elements.phosphorus, 1/3),
     ],
 )
+leporasine = Element(
+    "Лепоразин",
+    [
+        CraftElement(base_elements.iron_silicide, 1/2),
+        CraftElement(base_elements.copper, 1/2),
+        CraftElement(base_elements.plasma, 0.0000000000000000000000001),
+    ],
+)
 
 element_list = [
     bicaridine,
@@ -49,4 +57,5 @@ element_list = [
     puncturase,
     lacerinole,
     dermaline,
+    leporasine,
 ]

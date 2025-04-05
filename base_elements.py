@@ -8,6 +8,9 @@ sugar = Element("Сахар", [])
 lithium = Element("Литий", [])
 silicon = Element("Кремний", [])
 phosphorus = Element("Фосфор", [])
+iron = Element("Железо", [])
+copper = Element("Медь", [])
+plasma = Element("Плазма", [])
 
 
 # Промежуточные элементы
@@ -38,5 +41,12 @@ celotane = Element(
     [
         CraftElement(silicon, 1/2),
         CraftElement(carbon, 1/2),
+    ],
+)
+iron_silicide = Element(
+    "Силицид железа",
+    [
+        CraftElement(silicon, 1/2),
+        CraftElement(iron, 1/2),
     ],
 )
