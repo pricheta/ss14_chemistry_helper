@@ -50,6 +50,15 @@ leporasine = Element(
         CraftElement(base_elements.plasma, 0.0000000000000000000000001),
     ],
 )
+pirasine = Element(
+    "Пиразин",
+    [
+        CraftElement(leporasine, 1/3),
+        CraftElement(dermaline, 1/3),
+        CraftElement(base_elements.carbon, 1/3),
+    ],
+)
+
 
 element_list = [
     bicaridine,
@@ -58,4 +67,5 @@ element_list = [
     lacerinole,
     dermaline,
     leporasine,
+    pirasine,
 ]
