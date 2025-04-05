@@ -6,6 +6,9 @@ hydrogen = Element("Водород", [])
 carbon = Element("Углерод", [])
 sugar = Element("Сахар", [])
 lithium = Element("Литий", [])
+silicon = Element("Кремний", [])
+phosphorus = Element("Фосфор", [])
+
 
 # Промежуточные элементы
 inaprovaline = Element(
@@ -28,5 +31,12 @@ bensole = Element(
     [
         CraftElement(carbon, 1),
         CraftElement(hydrogen, 1),
+    ],
+)
+celotane = Element(
+    "Келотан",
+    [
+        CraftElement(silicon, 1/2),
+        CraftElement(carbon, 1/2),
     ],
 )
