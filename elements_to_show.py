@@ -1,6 +1,7 @@
 import base_elements
 from element_schema import Element, CraftElement
 
+
 # Лекарства от механического урона
 bicaridine = Element(
     "Бикаридин",
@@ -78,14 +79,29 @@ siginate = Element(
 )
 
 
+# Лекарства от токсинов
+diloven = Element(
+    "Диловен",
+    [
+        CraftElement(base_elements.potassium, 1/3),
+        CraftElement(base_elements.silicon, 1/3),
+        CraftElement(base_elements.nitrogen, 1/3),
+    ],
+)
+
+
+
 element_list = [
     bicaridine,
     bruisine,
     puncturase,
     lacerinole,
+
     dermaline,
     leporasine,
     pirasine,
     insusine,
     siginate,
+
+    diloven,
 ]
