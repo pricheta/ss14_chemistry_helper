@@ -1,25 +1,35 @@
 class CraftElement:
-    element: "Element"
-    amount: int
+    def __init__(
+        self,
+        element: "Element",
+        amount: float,
+    ) -> None:
+        self.element = element
+        self.amount = amount
+
+    def __str__(self) -> str:
+        return f"{self.element}: {self.amount}"
 
 
 class Element:
     def __init__(
         self,
         name: str,
-        base: bool,
-        recipe: list[CraftElement] | None = None,
+        recipe: list[CraftElement],
     ) -> None:
         self.name = name
-        self.base = base
-        self.recipe = recipe if base else None
+        self.recipe = recipe
 
-
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
 
+    def get_full_recipe(self, amount: float) -> list[tuple["Element", float]]:
+        full_recipe: list[tuple["Element", float]] = []
 
-    def get_full_recipe(self, amount: int):
-        if not self.base:
-            ...
-        return {self: amount}
+        if not self.recipe:
+            full_recipe = [(self, amount)]
+        else:
+            for craft_element in self.recipe:
+                full_recipe += craft_element.element.get_full_recipe(amount * craft_element.amount)
+
+        return full_recipe
