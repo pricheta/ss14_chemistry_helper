@@ -17,8 +17,9 @@ ELEMENT_DICT: dict[int, Element] = {
     if element.show_user
 }
 
+
 @app.get("/", response_class=HTMLResponse)
-async def root(request: Request, element_id: int = 0, element_amount: int = 0):
+async def root(request: Request, element_id: int | None = None, element_amount: int | None = None):
     element = ELEMENT_DICT.get(element_id)
 
     if element and element_amount:

@@ -15,11 +15,30 @@
             color: #333;
             background-color: #f5f5f5;
             margin: 0;
-            padding: 5px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            padding: 20px;
             min-height: 100vh;
+        }
+
+        .main-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .elements-sidebar {
+            flex: 0 0 300px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            height: fit-content;
+        }
+
+        .content-side {
+            flex: 1;
+            max-width: 600px;
         }
 
         .container {
@@ -28,8 +47,8 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             padding: 30px;
             width: 100%;
-            max-width: 600px;
             box-sizing: border-box;
+            margin-bottom: 20px;
         }
 
         h1 {
@@ -93,56 +112,80 @@
             font-style: italic;
         }
 
-        /* Добавленные стили для кирпичиков элементов */
+        /* Стили для списка элементов */
         .elements-grid {
             display: grid;
-            gap: 10px;
+            gap: 8px;
             margin-top: 15px;
         }
 
         .element-brick {
             background-color: #e9ecef;
             border-radius: 4px;
-            padding: 10px;
+            padding: 6px 4px;
             text-align: center;
             font-family: monospace;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            font-size: 14px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        @media (max-width: 900px) {
+            .main-container {
+                flex-direction: column;
+            }
+            .elements-sidebar {
+                flex: 1;
+                max-width: 100%;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="response">
-            <h1>Список доступных элементов</h1>
-            <div class="elements-grid">
-                {% for step in available_elements %}
-                <div class="element-brick">{{ step }}</div>
-                {% endfor %}
+    <div class="main-container">
+        <!-- Левая колонка - список элементов -->
+        <div class="elements-sidebar">
+            <div class="response">
+                <h1>Доступные элементы</h1>
+                <div class="elements-grid">
+                    {% for step in available_elements %}
+                    <div class="element-brick">{{ step }}</div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
 
-        <form method="GET" class="form">
-            <div class="form-group">
-                <label for="elementId">Номер химического элемента</label>
-                <input type="number" id="elementId" name="element_id" required value="{{ element_id }}" min="1">
+        <!-- Правая колонка - основное содержимое -->
+        <div class="content-side">
+            <div class="container">
+                <form method="GET" class="form">
+                    <div class="form-group">
+                        <label for="elementId">Номер химического элемента</label>
+                        <input type="number" id="elementId" name="element_id" required value="{{ element_id }}" min="1">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="elementAmount">Количество химического элемента</label>
+                        <input type="number" id="elementAmount" name="element_amount" required min="1" value="{{ element_amount }}">
+                    </div>
+
+                    <button type="submit">Отправить</button>
+                </form>
             </div>
 
-            <div class="form-group">
-                <label for="elementAmount">Количество химического элемента</label>
-                <input type="number" id="elementAmount" name="element_amount" required min="1" value="{{ element_amount }}">
+            {% if recipe %}
+            <div class="container">
+                <div class="response">
+                    <h1>Рецепт</h1>
+                    {% for step in recipe %}
+                        <div>{{ step }}</div>
+                    {% endfor %}
+                </div>
             </div>
-
-            <button type="submit">Отправить</button>
-        </form>
-
-        {% if recipe %}
-            <div class="response">
-                <h1>Рецепт</h1>
-                {% for step in recipe %}
-                    <div>{{ step }}</div>
-                {% endfor %}
-            </div>
-        {% endif %}
+            {% endif %}
+        </div>
     </div>
 </body>
 </html>
