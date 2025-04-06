@@ -2,7 +2,7 @@
 # pylint: disable=missing-module-docstring, missing-class-docstring, missing-function-docstring, line-too-long
 import math
 
-from elements import Element
+from app.elements import Element
 
 
 class CraftStep:
