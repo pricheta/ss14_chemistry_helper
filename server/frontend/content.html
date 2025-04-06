@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Химические элементы</title>
     <style>
-
         div {
             padding: 3px;
         }
@@ -93,16 +92,33 @@
             color: #999;
             font-style: italic;
         }
+
+        /* Добавленные стили для кирпичиков элементов */
+        .elements-grid {
+            display: grid;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .element-brick {
+            background-color: #e9ecef;
+            border-radius: 4px;
+            padding: 10px;
+            text-align: center;
+            font-family: monospace;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
     </style>
 </head>
 <body>
     <div class="container">
-
         <div class="response">
             <h1>Список доступных элементов</h1>
-            {% for step in available_elements %}
-            <div>{{ step }}</div>
-            {% endfor %}
+            <div class="elements-grid">
+                {% for step in available_elements %}
+                <div class="element-brick">{{ step }}</div>
+                {% endfor %}
+            </div>
         </div>
 
         <form method="GET" class="form">
