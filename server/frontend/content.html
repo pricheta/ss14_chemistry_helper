@@ -13,7 +13,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
-            background-color: #f5f5f5;
+            background-color: white;
             margin: 0;
             padding: 20px;
             min-height: 100vh;
@@ -31,9 +31,9 @@
             flex: 0 0 300px;
             background-color: white;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
             height: fit-content;
+            border: 1px solid #FFE8D1;
         }
 
         .content-side {
@@ -44,18 +44,23 @@
         .container {
             background-color: white;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             padding: 30px;
             width: 100%;
             box-sizing: border-box;
             margin-bottom: 20px;
+            border: 1px solid #FFE8D1;
         }
 
         h1 {
-            color: #444;
+            color: #FFA44B;
             margin-top: 0;
             font-size: 24px;
             text-align: center;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #FFE8D1;
         }
 
         .form {
@@ -76,34 +81,47 @@
 
         input {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            padding: 12px;
+            border: 1px solid #FFE8D1;
+            border-radius: 6px;
             font-size: 16px;
             box-sizing: border-box;
         }
 
+        input:focus {
+            outline: none;
+            border-color: #FFA44B;
+        }
+
         button {
-            background-color: #6c757d;
+            background-color: #FFA44B;
             color: white;
             border: none;
-            padding: 12px 20px;
-            border-radius: 4px;
+            padding: 14px 20px;
+            border-radius: 6px;
             cursor: pointer;
             font-size: 16px;
             width: 100%;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.2s;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
         button:hover {
-            background-color: #5a6268;
+            background-color: #FF8C00;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(0);
         }
 
         .response {
-            padding: 5px;
-            background-color: #f8f9fa;
-            border-radius: 4px;
-            border-left: 4px solid #6c757d;
+            padding: 15px;
+            background-color: white;
+            border-radius: 6px;
+            border-left: 4px solid #FFA44B;
             font-family: monospace;
         }
 
@@ -115,8 +133,8 @@
         /* Стили для списка элементов */
         .elements-grid {
             display: grid;
-            gap: 8px;
-            margin-top: 15px;
+            gap: 10px;
+            margin-top: 20px;
         }
 
         .response div {
@@ -124,16 +142,24 @@
         }
 
         .element-brick {
-            background-color: #e9ecef;
-            border-radius: 4px;
-            padding: 6px 4px;
+            background-color: white;
+            border-radius: 6px;
+            padding: 8px 6px;
             text-align: center;
             font-family: monospace;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
             font-size: 14px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            border: 1px solid #FFE8D1;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .element-brick:hover {
+            transform: translateY(-2px);
+            border-color: #FFA44B;
+            background-color: #FFF5EB;
         }
 
         @media (max-width: 900px) {
@@ -154,7 +180,7 @@
                 <h1>Доступные элементы</h1>
                 <div class="elements-grid">
                     {% for step in available_elements %}
-                    <div class="element-brick">{{ step }}</div>
+                    <div class="element-brick" onclick="insertElementIdAndSubmit('{{ step }}')">{{ step }}</div>
                     {% endfor %}
                 </div>
             </div>
@@ -163,7 +189,7 @@
         <div class="content-side">
             <div class="container">
                 <h1>Получение рецепта</h1>
-                <form method="GET" class="form">
+                <form method="GET" class="form" id="recipeForm">
                     <div class="form-group">
                         <label for="elementId">Номер химического элемента</label>
                         <input type="number" id="elementId" name="element_id" required value="{{ element_id }}" min="1">
@@ -174,7 +200,7 @@
                         <input type="number" id="elementAmount" name="element_amount" required min="1" value="{{ element_amount }}">
                     </div>
 
-                    <button type="submit">Отправить</button>
+                    <button type="submit" id="submitButton">Отправить</button>
                 </form>
             </div>
 
@@ -190,5 +216,22 @@
             {% endif %}
         </div>
     </div>
+
+    <script>
+        function insertElementIdAndSubmit(elementText) {
+            // Извлекаем число до точки (ID элемента)
+            const elementId = elementText.split('.')[0].trim();
+
+            // Вставляем ID в поле ввода
+            const elementIdField = document.getElementById('elementId');
+            elementIdField.value = elementId;
+
+            // Фокусируемся на поле ID (чтобы курсор не переходил на количество)
+            elementIdField.focus();
+
+            // Нажимаем кнопку отправки
+            document.getElementById('submitButton').click();
+        }
+    </script>
 </body>
 </html>

@@ -19,7 +19,7 @@ ELEMENT_DICT: dict[int, Element] = {
 
 
 @app.get("/", response_class=HTMLResponse)
-async def root(request: Request, element_id: int | None = None, element_amount: int | None = None):
+async def root(request: Request, element_id: int | None = None, element_amount: int = 180):
     element = ELEMENT_DICT.get(element_id)
 
     if element and element_amount:
