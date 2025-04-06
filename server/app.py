@@ -21,25 +21,22 @@ ELEMENT_DICT: dict[int, Element] = {
 async def root(request: Request, element_id: int = 0, element_amount: int = 0):
     element = ELEMENT_DICT.get(element_id)
 
-    available_elements_str = "Список доступных элементов\n"
-    for number, element in ELEMENT_DICT.items():
-        available_elements_str += f"\n{number}. {element}"
-
-    jinja_dict = {
-        "request": request,
-        "available_elements_str": available_elements_str,
-    }
-
-    print(element, element_amount, element and element_amount)
     if element and element_amount:
         recipe = get_element_recipe(element, element_amount, [])
-        jinja_dict |= {
-            "recipe": recipe,
-        }
+    else:
+        recipe = None
 
-    print(jinja_dict)
+    available_elements = []
+    for number, element in ELEMENT_DICT.items():
+        available_elements.append(f"{number}. {element}")
 
     return templates.TemplateResponse(
         "content.html",
-        jinja_dict,
+        {
+            "request": request,
+            "available_elements": available_elements,
+            "recipe": recipe,
+            "element_id": element_id,
+            "element_amount": element_amount,
+        },
     )
