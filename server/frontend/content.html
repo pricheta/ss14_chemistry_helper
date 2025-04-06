@@ -187,6 +187,17 @@
         </div>
 
         <div class="content-side">
+            {% if recipe %}
+            <div class="container">
+                <div class="response">
+                    <h1>Рецепт</h1>
+                    {% for step in recipe %}
+                        <div>{{ step }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
             <div class="container">
                 <h1>Получение рецепта</h1>
                 <form method="GET" class="form" id="recipeForm">
@@ -203,17 +214,6 @@
                     <button type="submit" id="submitButton">Отправить</button>
                 </form>
             </div>
-
-            {% if recipe %}
-            <div class="container">
-                <div class="response">
-                    <h1>Рецепт</h1>
-                    {% for step in recipe %}
-                        <div>{{ step }}</div>
-                    {% endfor %}
-                </div>
-            </div>
-            {% endif %}
         </div>
     </div>
 
