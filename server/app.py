@@ -23,7 +23,12 @@ async def root(request: Request, element_id: int | None = None, element_amount: 
     element = ELEMENT_DICT.get(element_id)
 
     if element and element_amount:
-        recipe = get_element_recipe(element, element_amount, [])
+        raw_recipe = get_element_recipe(element, element_amount, [])
+        recipe = []
+        for step in raw_recipe:
+            spaces = " " * 4 * len(step.step_number)
+            print(f'{spaces=}')
+            recipe.append(f"{spaces}{step}")
     else:
         recipe = None
 

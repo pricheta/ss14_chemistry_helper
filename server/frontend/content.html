@@ -119,6 +119,10 @@
             margin-top: 15px;
         }
 
+        .response div {
+            white-space: pre;
+        }
+
         .element-brick {
             background-color: #e9ecef;
             border-radius: 4px;
@@ -145,7 +149,6 @@
 </head>
 <body>
     <div class="main-container">
-        <!-- Левая колонка - список элементов -->
         <div class="elements-sidebar">
             <div class="response">
                 <h1>Доступные элементы</h1>
@@ -157,9 +160,9 @@
             </div>
         </div>
 
-        <!-- Правая колонка - основное содержимое -->
         <div class="content-side">
             <div class="container">
+                <h1>Получение рецепта</h1>
                 <form method="GET" class="form">
                     <div class="form-group">
                         <label for="elementId">Номер химического элемента</label>
