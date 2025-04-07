@@ -1,23 +1,22 @@
-# pylint: disable=too-few-public-methods, too-many-positional-arguments, too-many-arguments,
-# pylint: disable=missing-module-docstring, missing-class-docstring
+
 class Element:
-    instances: list["Element"] = []
+    available_for_users_list: list["Element"] = []
 
     def __init__(
         self,
         name: str,
-        recipe: list[tuple["Element", float]] | None = None,
-        show_user: bool = False,
+        recipe: list[tuple["Element", float]] = [],
+        available_for_users: bool = False,
         temperature: str = "",
         catalyst: tuple["Element", int] | tuple = (),
     ) -> None:
         self.name = name
         self.recipe = recipe
-        self.show_user = show_user
+        self.show_user = available_for_users
         self.temperature = temperature
         self.catalyst = catalyst
-        if show_user:
-            Element.instances.append(self)
+        if available_for_users:
+            Element.available_for_users_list.append(self)
 
     def __str__(self) -> str:
         return self.name
@@ -120,7 +119,7 @@ unstable_mutagen = Element(
         (phosphorus, 1 / 3),
         (radium, 1 / 3),
     ],
-    show_user=True,
+    available_for_users=True,
 )
 bicaridine = Element(
     "Бикаридин",
