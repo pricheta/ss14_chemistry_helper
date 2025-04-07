@@ -4,8 +4,8 @@ from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
-from app.craft_step import get_element_recipe
-from app.elements import Element
+from recipe_maker.craft_step import get_element_recipe
+from recipe_maker.elements import Element
 
 
 app = FastAPI()
@@ -13,7 +13,7 @@ templates = Jinja2Templates(directory=Path(__file__).parent / "frontend")
 
 
 ELEMENT_DICT: dict[int, Element] = {
-    number + 1: element for number, element in enumerate(Element.instances)
+    number + 1: element for number, element in enumerate(Element.available_for_users_list)
     if element.show_user
 }
 
@@ -26,7 +26,7 @@ async def root(request: Request, element_id: int | None = None, element_amount: 
         raw_recipe = get_element_recipe(element, element_amount, [])
         recipe = []
         for step in raw_recipe:
-            spaces = " " * 4 * len(step.step_number)
+            spaces = " " * 4 * len(step.step_extended_number)
             recipe.append(f"{spaces}{step}")
     else:
         recipe = None
