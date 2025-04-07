@@ -35,13 +35,19 @@ plasma = Element("Плазма")
 water = Element("Вода")
 sodium = Element("Натрий")
 chlorine = Element("Хлор")
-ammonia = Element("Аммиак")
 potassium = Element("Калий")
 nitrogen = Element("Азот")
 radium = Element("Радий")
 ethanol = Element("Этанол")
 
 
+ammonia = Element(
+    "Аммиак",
+    [
+        (hydrogen, 3/4),
+        (nitrogen, 1/4),
+    ],
+)
 inaprovaline = Element(
     "Инапровалин",
     [
