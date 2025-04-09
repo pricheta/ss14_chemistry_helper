@@ -1,22 +1,35 @@
+from enum import StrEnum
+
+
+class ElementGroup(StrEnum):
+    MECHANIC = "Механический"
+    PHYSIC = "Физический"
+    TOXIN = "Токсины"
+    GASP = "Нехватка воздуха"
+    CELLULAR = "Клеточный"
+    BOTANIC = "Ботаник"
+    OTHER = "Остальное"
+    HIDDEN = "Скрытые"
+
 
 class Element:
-    available_for_users_list: list["Element"] = []
+    available_elements: list["Element"] = []
 
     def __init__(
         self,
         name: str,
         recipe: list[tuple["Element", float]] = [],
-        available_for_users: bool = False,
+        group: ElementGroup = ElementGroup.HIDDEN,
         temperature: str = "",
         catalyst: tuple["Element", int] | tuple = (),
     ) -> None:
         self.name = name
         self.recipe = recipe
-        self.show_user = available_for_users
+        self.group = group
         self.temperature = temperature
         self.catalyst = catalyst
-        if available_for_users:
-            Element.available_for_users_list.append(self)
+        if self.group != ElementGroup.HIDDEN:
+            Element.available_elements.append(self)
 
     def __str__(self) -> str:
         return self.name
@@ -125,7 +138,7 @@ unstable_mutagen = Element(
         (phosphorus, 1 / 3),
         (radium, 1 / 3),
     ],
-    available_for_users=True,
+    group=ElementGroup.BOTANIC,
 )
 bicaridine = Element(
     "Бикаридин",
@@ -133,7 +146,7 @@ bicaridine = Element(
         (carbon, 1 / 2),
         (inaprovaline, 1 / 2),
     ],
-    True,
+    group=ElementGroup.MECHANIC,
 )
 bruisine = Element(
     "Бруизин",
@@ -142,7 +155,7 @@ bruisine = Element(
         (bicaridine, 1 / 2),
         (sugar, 1 / 2),
     ],
-    True,
+    group=ElementGroup.MECHANIC,
 )
 puncturase = Element(
     "Пунктураз",
@@ -150,7 +163,7 @@ puncturase = Element(
         (hydroxide, 1 / 2),
         (bicaridine, 1 / 2),
     ],
-    True,
+    group=ElementGroup.MECHANIC,
     temperature="выше 325К",
 )
 lacerinole = Element(
@@ -159,7 +172,7 @@ lacerinole = Element(
         (bensole, 1 / 2),
         (bicaridine, 1 / 2),
     ],
-    True,
+    group=ElementGroup.MECHANIC,
     temperature="выше 335К",
 )
 dermaline = Element(
@@ -169,7 +182,7 @@ dermaline = Element(
         (oxygen, 1 / 3),
         (phosphorus, 1 / 3),
     ],
-    True,
+    group=ElementGroup.PHYSIC,
 )
 leporasine = Element(
     "Лепоразин",
@@ -177,7 +190,7 @@ leporasine = Element(
         (iron_silicide, 1 / 2),
         (copper, 1 / 2),
     ],
-    True,
+    group=ElementGroup.PHYSIC,
     catalyst=(plasma, 1),
 )
 pirasine = Element(
@@ -187,7 +200,7 @@ pirasine = Element(
         (dermaline, 1 / 3),
         (carbon, 1 / 3),
     ],
-    True,
+    group=ElementGroup.PHYSIC,
     temperature="выше 540К",
 )
 insusine = Element(
@@ -197,8 +210,8 @@ insusine = Element(
         (silicon, 1 / 3),
         (celotane, 1 / 3),
     ],
-    True,
-    "выше 433К",
+    group=ElementGroup.PHYSIC,
+    temperature="выше 433К",
 )
 siginate = Element(
     "Сигинат",
@@ -209,8 +222,8 @@ siginate = Element(
         (celotane, 1 / 4),
         (sodium_hydroxide, 1 / 4),
     ],
-    True,
-    "выше 370К",
+    group=ElementGroup.PHYSIC,
+    temperature="выше 370К",
 )
 diloven = Element(
     "Диловен",
@@ -219,7 +232,7 @@ diloven = Element(
         (silicon, 1 / 3),
         (nitrogen, 1 / 3),
     ],
-    True,
+    group=ElementGroup.TOXIN,
 )
 hyronalyne = Element(
     "Хироналин",
@@ -234,7 +247,7 @@ aritrazine = Element(
         (hyronalyne, 1 / 2),
         (hydrogen, 1 / 2),
     ],
-    True,
+    group=ElementGroup.TOXIN,
 )
 dexolyne_plus = Element(
     "Дексалин Плюс",
@@ -243,7 +256,7 @@ dexolyne_plus = Element(
         (dexolyne, 1 / 3),
         (carbon, 1 / 3),
     ],
-    True,
+    group=ElementGroup.GASP,
 )
 saline_solution = Element(
     "Физраствор",
@@ -251,7 +264,7 @@ saline_solution = Element(
         (water, 4 / 5),
         (salt, 1 / 5),
     ],
-    True,
+    group=ElementGroup.GASP,
 )
 falanhymyne = Element(
     "Фалангимин",
@@ -260,5 +273,5 @@ falanhymyne = Element(
         (hyronalyne, 1 / 3),
         (ethanol, 1 / 3),
     ],
-    True,
+    group=ElementGroup.CELLULAR,
 )
